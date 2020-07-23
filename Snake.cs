@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace Snake
 {
@@ -35,6 +36,38 @@ namespace Snake
             Point nextPoint = new Point(head);
             nextPoint.Move(1, MoveDirection);
             return nextPoint;
-        }   
+        }
+
+        public void HandleKey(ConsoleKeyInfo key)
+        {
+            if (key.Key == ConsoleKey.LeftArrow)
+            {
+                MoveDirection = Direction.Left;
+            }
+            else if (key.Key == ConsoleKey.RightArrow)
+            {
+                MoveDirection = Direction.Right;
+            }
+            else if (key.Key == ConsoleKey.UpArrow)
+            {
+                MoveDirection = Direction.Up;
+            }
+            else if (key.Key == ConsoleKey.DownArrow)
+            {
+                MoveDirection = Direction.Down;
+            }
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.Symbol = head.Symbol;
+                PList.Add(food);
+                return true;
+            }
+            return false;
+        }
     }
 }

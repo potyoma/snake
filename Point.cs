@@ -57,5 +57,10 @@ namespace Snake
             Symbol = ' ';
             Draw();
         }
+
+        public bool IsHit(Point p)
+        {
+            return p.X == this.X && p.Y == this.Y;
+        }
     }
 }
