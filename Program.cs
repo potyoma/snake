@@ -14,11 +14,18 @@ namespace Snake
             p1.Draw();
             p2.Draw();
 
-            var horizontalLine = new Line(1, 1, 10, '*');
-            horizontalLine.Draw();
+            List<Line> lines = new List<Line>()
+            {
+                new Line(1, 1, 20, '*'),
+                new Line(1, 1, 10, '*', false),
+                new Line(1, 11, 20, '*'),
+                new Line(21, 1, 10, '*', false)
+            };            
 
-            var verticalLine = new Line(1, 1, 10, '*', false);
-            verticalLine.Draw();
+            foreach (Line line in lines)
+            {
+                line.Draw();
+            }
 
             Read();
         }

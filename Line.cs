@@ -2,10 +2,8 @@ using System.Collections.Generic;
 
 namespace Snake
 {
-    public class Line
+    public class Line : Figure
     {
-        List<Point> PList = new List<Point>();
-
         public Line(int xStart, int yStart, int length, char symbol, bool isHorisontal = true)
         {
             if (isHorisontal)
@@ -21,14 +19,6 @@ namespace Snake
                 {
                     PList.Add(new Point(xStart, i, symbol));
                 }
-            }
-        }
-
-        public void Draw()
-        {
-            foreach (Point p in PList)
-            {
-                p.Draw();
             }
         }
     }
