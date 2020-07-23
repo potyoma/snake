@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Snake
 {
-    public class Figure
+    public class Figure : Point
     {
         protected List<Point> PList;
 
-        public void Draw()
+        public override void Draw()
         {
             if (PList != null)
             {    

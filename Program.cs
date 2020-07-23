@@ -12,7 +12,8 @@ namespace Snake
             SetWindowSize(80,25);
             SetBufferSize(80,25);
             
-            DrawFrame();
+            var walls = new Walls(80, 25);
+            walls.Draw();
             
             Snake snake = new Snake(new Point(5, 3, '*'), 5, Direction.Down);
             snake.Draw();
@@ -21,29 +22,18 @@ namespace Snake
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-            GamerInput(snake, ref food, foodCreator);
+            GamerInput(snake, ref food, foodCreator, ref walls);
         }
 
-        static void DrawFrame()
-        {
-            List<Line> lines = new List<Line>()
-            {
-                new Line(1, 1, 77, '+'),
-                new Line(1, 1, 23, '+', false),
-                new Line(1, 24, 77, '+'),
-                new Line(78, 1, 23, '+', false)
-            };            
-
-            foreach (Line line in lines)
-            {
-                line.Draw();
-            }
-        }
-
-        static void GamerInput(Snake snake, ref Point food, FoodCreator foodCreator)
+        static void GamerInput(Snake snake, ref Point food, FoodCreator foodCreator, ref Walls walls)
         {
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
+
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();

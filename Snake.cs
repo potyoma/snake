@@ -69,5 +69,11 @@ namespace Snake
             }
             return false;
         }
+
+        public bool IsHitTail()
+        {
+            Point head = GetNextPoint();
+            return head.IsHit(PList[0]);
+        }
     }
 }

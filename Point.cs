@@ -46,7 +46,7 @@ namespace Snake
             }
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             Console.SetCursorPosition(X, Y);
             Console.Write(Symbol);
