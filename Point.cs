@@ -19,6 +19,33 @@ namespace Snake
             Symbol = sym;
         }
 
+        public Point(Point p)
+        {
+            X = p.X;
+            Y = p.Y;
+            Symbol = p.Symbol;
+        }
+
+        public void Move(int offset, Direction direction)
+        {
+            if (direction == Direction.Right)
+            {
+                X += offset;
+            }
+            else if (direction == Direction.Left)
+            {
+                X -= offset;
+            }
+            else if (direction == Direction.Up)
+            {
+                Y -= offset;
+            }
+            else
+            {
+                Y += offset;
+            }
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);

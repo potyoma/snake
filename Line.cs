@@ -6,6 +6,8 @@ namespace Snake
     {
         public Line(int xStart, int yStart, int length, char symbol, bool isHorisontal = true)
         {
+            PList = new List<Point>();
+            
             if (isHorisontal)
             {
                 for (int i = xStart; i <= xStart + length; i++)

@@ -8,26 +8,31 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            var p1 = new Point(5, 3, '*');
-            var p2 = new Point(8, 2, '/');
+            DrawFrame();
+            DrawSnake(new Point(6, 4, '*'));
+            Read();
+        }
 
-            p1.Draw();
-            p2.Draw();
-
+        static void DrawFrame()
+        {
             List<Line> lines = new List<Line>()
             {
-                new Line(1, 1, 20, '*'),
-                new Line(1, 1, 10, '*', false),
-                new Line(1, 11, 20, '*'),
-                new Line(21, 1, 10, '*', false)
+                new Line(1, 1, 20, '+'),
+                new Line(1, 1, 10, '+', false),
+                new Line(1, 11, 20, '+'),
+                new Line(21, 1, 10, '+', false)
             };            
 
             foreach (Line line in lines)
             {
                 line.Draw();
             }
+        }
 
-            Read();
+        static void DrawSnake(Point point)
+        {
+            Snake snake = new Snake(point, 5, Direction.Down);
+            snake.Draw();
         }
     }
 }

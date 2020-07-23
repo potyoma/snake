@@ -4,13 +4,16 @@ namespace Snake
 {
     public class Figure
     {
-        protected List<Point> PList = new List<Point>();
+        protected List<Point> PList;
 
         public void Draw()
         {
-            foreach (Point p in PList)
-            {
-                p.Draw();
+            if (PList != null)
+            {    
+                foreach (Point p in PList)
+                {
+                    p.Draw();
+                }
             }
         }
     }
