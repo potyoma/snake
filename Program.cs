@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace Snake
@@ -12,6 +13,12 @@ namespace Snake
 
             p1.Draw();
             p2.Draw();
+
+            var horizontalLine = new Line(1, 1, 10, '*');
+            horizontalLine.Draw();
+
+            var verticalLine = new Line(1, 1, 10, '*', false);
+            verticalLine.Draw();
 
             Read();
         }
