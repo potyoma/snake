@@ -8,6 +8,10 @@ namespace Snake
         public int Y { get; set; }
         public char Symbol { get; set; }
 
+        public Point()
+        {
+        }
+
         public Point(int x, int y, char sym)
         {
             X = x;
