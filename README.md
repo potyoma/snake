@@ -1,3 +1,3 @@
 # snake
-Snake game
+Snake game\n
 Learning OOP by creating a console game.
