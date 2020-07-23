@@ -72,8 +72,15 @@ namespace Snake
 
         public bool IsHitTail()
         {
-            Point head = GetNextPoint();
-            return head.IsHit(PList[0]);
+            var head = PList[PList.Count - 1];
+            for (int i = 0; i < PList.Count - 2; i++)
+            {
+                if (head.IsHit(PList[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

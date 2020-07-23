@@ -9,6 +9,8 @@ namespace Snake
     {
         static void Main(string[] args)
         {
+            bool IsGaming = true;
+
             SetWindowSize(80,25);
             SetBufferSize(80,25);
             
@@ -22,15 +24,11 @@ namespace Snake
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-            GamerInput(snake, ref food, foodCreator, ref walls);
-        }
-
-        static void GamerInput(Snake snake, ref Point food, FoodCreator foodCreator, ref Walls walls)
-        {
-            while (true)
+            while (IsGaming)
             {
                 if (walls.IsHit(snake) || snake.IsHitTail())
                 {
+                    IsGaming = false;
                     break;
                 }
 
@@ -47,6 +45,12 @@ namespace Snake
                 }
                 Thread.Sleep(100);
                 snake.Move();
+            }
+
+            if (!IsGaming)
+            {
+                Write("Game over! You've failed!\n");
+                Read();
             }
         }
     }
